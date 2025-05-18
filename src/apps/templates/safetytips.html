@@ -1,0 +1,186 @@
+<!-- Add this section below the Safety Section in your existing code -->
+<section class="safety-tips" id="safety">
+    <div class="grid-container">
+        <div class="feature-card">
+            <h3>🛡️ General Safety Tips</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Always share live location with trusted contacts</li>
+                <li><i class="fas fa-phone-volume"></i> Keep emergency numbers on speed dial (112, 1091)</li>
+                <li><i class="fas fa-car"></i> Verify cab details before boarding (Check number plate)</li>
+                <li><i class="fas fa-lock"></i> Avoid isolated ATMs/restrooms at night</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>🚆 Public Transport Safety</h3>
+            <ul>
+                <li><i class="fas fa-subway"></i> Use women-only coaches in metros/trains</li>
+                <li><i class="fas fa-bus"></i> Prefer front seats in buses</li>
+                <li><i class="fas fa-phone"></i> Download RailMadad app (152 for railway emergencies)</li>
+                <li><i class="fas fa-road"></i> Avoid empty bus stops at night</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>🏢 Workplace Safety</h3>
+            <ul>
+                <li><i class="fas fa-gavel"></i> Know POSH Act 2013 provisions</li>
+                <li><i class="fas fa-file-alt"></i> Document all incidents formally</li>
+                <li><i class="fas fa-users"></i> Use company transport for late hours</li>
+                <li><i class="fas fa-exclamation-triangle"></i> Report inappropriate behavior immediately</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Emergency Preparedness Section -->
+    <div class="law-section">
+        <h2>Emergency Preparedness Kit</h2>
+        <div class="quick-links">
+            <div class="safety-kit">
+                <p>✅ Keep pepper spray in easy-to-reach pocket</p>
+                <p>✅ Save ICE (In Case of Emergency) contacts. (Settings > Safety & Emergency > Emergency Contacts)
+                <p>✅ Create code word with family for danger situations</p>
+                <p>✅ Keep ₹100 cash separate for emergencies</p>
+            </div>
+            <button class="safety-button" onclick="downloadSafetyGuide()">
+                <i class="fas fa-download"></i>
+                Download Safety Guide
+            </button>
+        </div>
+    </div>
+    <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+        Back to Previous Page
+    </button>
+</section>
+
+<!-- CSS for Safety Section -->
+<style>
+.safety-tips {
+    position: relative;
+    padding: 8rem 5%;
+    background: #f9f9f9;
+}
+
+.safety-tips .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.safety-tips .feature-card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.safety-tips .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.safety-tips h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.safety-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.safety-tips li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.safety-tips li:last-child {
+    border-bottom: none;
+}
+
+.safety-tips li:hover {
+    transform: translateX(8px);
+}
+
+.safety-tips i {
+    font-size: 1.1rem;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e91e63;
+    color: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.safety-kit {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 4rem 0;
+}
+
+.safety-button {
+    background: #e91e63;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+}
+
+.safety-button:hover {
+    background: #d81b60;
+}
+.back-button {
+    background: #555;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .safety-tips {
+        padding: 4rem 5%;
+    }
+    .safety-tips .feature-card {
+        padding: 1.75rem;
+    }
+    .safety-kit {
+        padding: 1.5rem;
+    }
+}
+</style>
+
+<script>
+function downloadSafetyGuide() {
+    alert("Downloading Women's Safety Handbook...");
+}
+function goBack() {
+    window.history.back();
+}
+</script>

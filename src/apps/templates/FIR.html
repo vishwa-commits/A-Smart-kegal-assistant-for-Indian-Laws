@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FIR Generator - Women's Safety</title>
+    <style>
+        /* Keep existing CSS styles */
+        .fir-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            font-family: 'Arial', sans-serif;
+        }
+        .form-section {
+            background: #fff5f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #c2185b;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ff80ab;
+            border-radius: 4px;
+        }
+        .legal-warning {
+            color: #d32f2f;
+            border-left: 4px solid #d32f2f;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        button {
+            background: #c2185b;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #firPreview {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Keep existing HTML structure -->
+    <div class="fir-container">
+        <h1>Women's Safety FIR Generator</h1>
+        
+        <div class="form-section">
+            <h2>Complainant Details</h2>
+            <label>Full Name:</label>
+            <input type="text" id="complainantName" required>
+            
+            <label>Age:</label>
+            <input type="number" id="complainantAge" required>
+            
+            <label>Address:</label>
+            <textarea id="complainantAddress" required></textarea>
+        </div>
+
+        <div class="form-section">
+            <h2>Incident Details</h2>
+            <label>Date & Time of Incident:</label>
+            <input type="datetime-local" id="incidentTime" required>
+            
+            <label>Location:</label>
+            <input type="text" id="incidentLocation" required>
+            
+            <label>Description (Include exact words used):</label>
+            <textarea id="incidentDescription" rows="5" required></textarea>
+            
+            <label>Applicable Laws:</label>
+            <select id="applicableLaws" multiple>
+                <option value="IPC 354">IPC 354 (Outraging modesty)</option>
+                <option value="IPC 498A">IPC 498A (Dowry harassment)</option>
+                <option value="PWDVA 2005">PWDVA 2005 (Domestic Violence)</option>
+                <option value="IT Act 66E">IT Act 66E (Privacy violation)</option>
+            </select>
+        </div>
+
+        <div class="legal-warning">
+            ⚠️ Warning: False FIR filing is punishable under IPC 177 & 211
+        </div>
+
+        <button onclick="generateFIR()">Generate FIR Draft</button>
+        <button onclick="downloadDOCX()" style="display:none;" id="downloadBtn">
+            Download FIR (DOCX)
+        </button>
+
+        <div id="firPreview"></div>
+    </div>
+
+    <script src="https://unpkg.com/docxtemplater@latest/build/docxtemplater.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script>
+        function generateFIR() {
+            // Existing generateFIR code
+            const data = {
+                name: document.getElementById('complainantName').value,
+                age: document.getElementById('complainantAge').value,
+                address: document.getElementById('complainantAddress').value,
+                datetime: document.getElementById('incidentTime').value,
+                location: document.getElementById('incidentLocation').value,
+                description: document.getElementById('incidentDescription').value,
+                laws: Array.from(document.getElementById('applicableLaws').selectedOptions)
+                          .map(option => option.value)
+            };
+
+            const firTemplate = `
+FIR No: ______________
+Police Station: ${/* Auto-fill using geolocation API */ ''}
+
+Date: ${new Date().toLocaleDateString('en-IN')}
+
+To,
+The Station House Officer
+${/* Dynamic PS name */ '____________________ Police Station'}
+
+Subject: FIR under ${data.laws.join(', ')} - Women's Safety Complaint
+
+I, ${data.name}, aged ${data.age} years, residing at:
+${data.address}
+
+solemnly declare that on ${new Date(data.datetime).toLocaleString('en-IN')} at 
+${data.location}, the following incident occurred:
+
+"${data.description}"
+
+The incident constitutes offenses under:
+${data.laws.map(law => `- ${law}`).join('\n')}
+
+I request that necessary action be taken under the relevant provisions of law.
+
+Declared this ${new Date().getDate()} day of ${new Date().toLocaleString('en-IN', {month: 'long'})} ${new Date().getFullYear()}.
+
+Signature: ____________________
+Name: ${data.name}
+Contact: ____________________
+            `;
+
+            document.getElementById('firPreview').textContent = firTemplate;
+            document.getElementById('downloadBtn').style.display = 'inline-block';
+        }
+
+        function downloadDOCX() {
+            const firContent = document.getElementById('firPreview').textContent;
+            
+            // Create Blob with FIR content
+            const blob = new Blob([firContent], { type: 'text/plain' });
+            
+            // Create temporary download link
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `FIR_${Date.now()}.txt`;
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            
+            // Cleanup
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+
+            // Clear all data
+            document.getElementById('complainantName').value = '';
+            document.getElementById('complainantAge').value = '';
+            document.getElementById('complainantAddress').value = '';
+            document.getElementById('incidentTime').value = '';
+            document.getElementById('incidentLocation').value = '';
+            document.getElementById('incidentDescription').value = '';
+            document.getElementById('applicableLaws').selectedIndex = -1;
+            document.getElementById('firPreview').textContent = '';
+            document.getElementById('downloadBtn').style.display = 'none';
+
+            // Security confirmation
+            alert('FIR downloaded successfully. All data has been wiped from system.');
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Bot</title>
+    <style>
+        .spinner {
+            border: 4px solid #f3f3f3; 
+            border-top: 4px solid #3498db; 
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            display: none;  
+            margin: 10px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #streaming-text {
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-line; /* Preserve newlines */
+        }
+        input[type="text"] {
+            width: 40%;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="search-bar-container">
+        <h1>Law Bot</h1>
+        <label for="messageText">Your query:</label>
+        <input type="text" id="user-input">
+        <button onclick="sendText()">Send</button>
+        <p>Answer :</p>
+        <div class="spinner" id="spinner"></div>
+    </div>
+
+    <div id="container">
+        <div id="streaming-text-container">
+            <div id="streaming-text"></div>
+        </div>
+    </div>
+    
+    <script>
+        var ws = new WebSocket("ws://localhost:8000/conversational_chat");
+        var streamingText = document.getElementById("streaming-text");
+        var spinner = document.getElementById("spinner");
+        var buffer = '';
+        var bulletPoints = false;
+        var imageUrls = [];
+        var referenceLink = '';
+
+        ws.onopen = function() {
+            spinner.style.display = 'none'; 
+        };
+
+        ws.onmessage = function (event) {
+            spinner.style.display = 'none'; 
+            var message = event.data;
+
+            if (message.startsWith("[[REFERENCE:")) {
+                referenceLink = message.slice(12, -2); // Extract the URL from the delimiter
+                displayFormattedText();
+            } 
+            else {
+                // Append each received character to the buffer
+                buffer += message;
+
+                // Display the buffer as it grows
+                streamingText.innerHTML += message;
+
+                // Format the text after each chunk (using timeout to simulate batch processing)
+                setTimeout(formatText, 100);
+            }
+        };
+
+        ws.onerror = function() {
+            spinner.style.display = 'none'; 
+            streamingText.textContent = "Error connecting to the server.";
+        };
+
+        ws.onclose = function() {
+            spinner.style.display = 'none'; 
+        };
+
+        function sendText() {
+            streamingText.innerHTML = "";
+            buffer = '';
+            imageUrls = [];
+            referenceLink = '';
+            spinner.style.display = 'block';  
+            var userInput = document.getElementById("user-input").value;
+            
+            ws.send(userInput);
+        }
+
+        
+
+
+    function formatText() {
+        var formattedMessage = buffer
+            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")  // Bold for **text**
+            .replace(/\*(.*?)\*/g, "<em>$1</em>")            // Italic for *text*
+            .replace(/### (.*?)\n/g, "<h3>$1</h3>")          // Heading 3 for ### text
+            .replace(/## (.*?)\n/g, "<h2>$1</h2>")           // Heading 2 for ## text
+            .replace(/# (.*?)\n/g, "<h1>$1</h1>")            // Heading 1 for # text
+            .replace(/\n/g, "<br>")                         // Newline for line breaks
+            .replace(/^\d+\.\s(.*?)$/gm, "<li>$1</li>")      // Numbered list
+            .replace(/<li>(.*?)<\/li>(?!<li>)/g, "<ul><li>$1</li></ul>") // Wrap in <ul> if not already
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, `<a href="$2" target="_blank">$1</a>`); // Markdown-style links
+
+        streamingText.innerHTML = formattedMessage;
+
+        if (referenceLink) {
+            streamingText.innerHTML += `<br><a href="${referenceLink}" target="_blank" style="color: #4CAF50; text-decoration: underline; margin-top: 10px;">Reference</a>`;
+        }
+    }
+        document.getElementById("user-input").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") { // Check if the key pressed is "Enter"
+                sendText(); // Call the sendText function
+            }
+        });
+    </script>
+</body>
+</html>

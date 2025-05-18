@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cases</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .case-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .questions, .answers {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .case-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .case-header h2 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+        .case-meta {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .case-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status-in-progress {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .qa-item {
+            margin-bottom: 1.5rem;
+        }
+        .question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+        .answer {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>All Cases - Detailed View</h1>
+        <a href="judgedashboard.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </header>
+
+    <div class="container">
+        <!-- Case 1 -->
+        <div class="case-container">
+            <div class="questions">
+                <div class="case-header">
+                    <h2>State vs. Johnson</h2>
+                    <div class="case-meta">
+                        <span># CR-2024-0456</span>
+                        <span>10:30 AM</span>
+                    </div>
+                    <span class="case-status status-pending">Pending Judgment</span>
+                    <p>Criminal case involving charges of fraud and embezzlement. Defense has filed motion to suppress.</p>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What is the main argument for the motion to suppress?</div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What precedent cases are relevant here?</div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: When is the next hearing scheduled?</div>
+                </div>
+            </div>
+            
+            <div class="answers">
+                <div class="case-header">
+                    <h2>Case Responses</h2>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What is the main argument for the motion to suppress?</div>
+                    <div class="answer">A: The defense argues the evidence was obtained without proper warrant authorization and cites violation of the defendant's Fourth Amendment rights.</div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What precedent cases are relevant here?</div>
+                    <div class="answer">A: Key precedents include:<br>
+                        - Smith v. Maryland (1979)<br>
+                        - United States v. Jones (2012)<br>
+                        - Carpenter v. United States (2018)
+                    </div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: When is the next hearing scheduled?</div>
+                    <div class="answer">A: The motion hearing is scheduled for April 15, 2024 at 9:30 AM in Courtroom 4B.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Case 2 -->
+        <div class="case-container">
+            <div class="questions">
+                <div class="case-header">
+                    <h2>Doe vs. Smith Corporation</h2>
+                    <div class="case-meta">
+                        <span># CV-2024-0789</span>
+                        <span>02:15 PM</span>
+                    </div>
+                    <span class="case-status status-in-progress">In Progress</span>
+                    <p>Civil lawsuit regarding wrongful termination. Plaintiff seeking damages of $2.5 million.</p>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What are the plaintiff's main allegations?</div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What evidence supports the wrongful termination claim?</div>
+                </div>
+            </div>
+            
+            <div class="answers">
+                <div class="case-header">
+                    <h2>Case Responses</h2>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What are the plaintiff's main allegations?</div>
+                    <div class="answer">A: The plaintiff alleges:<br>
+                        - Termination without cause after 12 years of service<br>
+                        - Age discrimination (plaintiff was 58 at termination)<br>
+                        - Retaliation for whistleblowing on safety violations
+                    </div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What evidence supports the wrongful termination claim?</div>
+                    <div class="answer">A: Key evidence includes:<br>
+                        - Performance reviews showing consistent "exceeds expectations" ratings<br>
+                        - Emails discussing the plaintiff's age and "need for fresh blood"<br>
+                        - DOL complaint filed 3 months prior to termination
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Case 3 -->
+        <div class="case-container">
+            <div class="questions">
+                <div class="case-header">
+                    <h2>In re: Peterson Estate</h2>
+                    <div class="case-meta">
+                        <span># PR-2024-0123</span>
+                        <span>11:00 AM</span>
+                    </div>
+                    <span class="case-status status-completed">Completed</span>
+                    <p>Probate matter with dispute among heirs regarding distribution of assets.</p>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What was the final distribution ruling?</div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: Were there any contested items?</div>
+                </div>
+            </div>
+            
+            <div class="answers">
+                <div class="case-header">
+                    <h2>Case Responses</h2>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: What was the final distribution ruling?</div>
+                    <div class="answer">A: The estate was distributed as follows:<br>
+                        - 50% to surviving spouse<br>
+                        - 25% to daughter from first marriage<br>
+                        - 25% to son from first marriage<br>
+                        Special bequest of family heirlooms as specified in addendum
+                    </div>
+                </div>
+                
+                <div class="qa-item">
+                    <div class="question">Q: Were there any contested items?</div>
+                    <div class="answer">A: The vacation property was initially contested but was awarded to the surviving spouse with right of first refusal given to the children if sold.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

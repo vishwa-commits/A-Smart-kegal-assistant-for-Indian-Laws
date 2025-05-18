@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Law Student Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      transition: all 0.3s;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      border-bottom: 2px solid #64748b;
+      padding-bottom: 10px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #e2e8f0;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #1e293b;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 270px;
+      padding: 30px;
+      flex: 1;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1e293b;
+      margin-bottom: 25px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent);
+      top: -50%;
+      left: -50%;
+      transition: all 0.5s ease;
+    }
+
+    .card:hover::before {
+      top: -30%;
+      left: -30%;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .card p {
+      color: #475569;
+    }
+
+    /* Chatbot Button */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .chatbot-btn:hover {
+      background: #1e40af;
+    }
+
+    @media(max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+    }
+    #content-area {
+      margin-top: 40px;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    #content-area h2 {
+      color: #0f172a;
+      margin-bottom: 15px;
+    }
+
+    #content-area ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    #content-area li {
+      margin-bottom: 10px;
+      color: #334155;
+    }
+
+    #content-area a {
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    #content-area a:hover {
+      text-decoration: underline;
+    }
+    
+    #content-area {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .back-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio:16/9) {
+    .back-video {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio:16/9) {
+    .back-video {
+        width: auto;
+        height: 100%;
+    }
+}
+  </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Law Student</h2>
+        <a href="#" onclick="showSidebarContent('laws')">📜 Indian Laws</a>
+        <a href="#" onclick="showSidebarContent('materials')">📚 Study Materials</a>
+        <a href="#" onclick="showSidebarContent('cases')">🧠 Case Studies</a>
+        <a href="#" onclick="showSidebarContent('events')">📅 Legal Events</a>
+        <a href="#" onclick="showSidebarContent('chatbot')">⚖️ Legal Chatbot</a>
+        <a href="/role" class="back-btn">← Back to Role</a>
+    
+
+      </div>
+      <video autoplay loop muted plays-inline class="back-video">
+        <source src="/static/video.mp4" type="video/mp4">
+    </video> 
+    <div class="main">
+        <div class="header">Welcome to Your Legal Learning Dashboard</div>
+    
+        <div class="cards">
+            <div class="card" onmouseover="showContent('fundamental')">
+              <h3>Fundamental Rights</h3>
+              <p>Explore key constitutional rights every citizen and law student must know.</p>
+            </div>
+            <div class="card" onmouseover="showContent('ipc')">
+              <h3>IPC Essentials</h3>
+              <p>Learn major sections of the Indian Penal Code through visual explanations.</p>
+            </div>
+            <div class="card" onmouseover="showContent('judgments')">
+              <h3>Recent Judgments</h3>
+              <p>Stay updated with landmark verdicts and their implications.</p>
+            </div>
+            <div class="card" onmouseover="showContent('notes')">
+              <h3>Downloadable Notes</h3>
+              <p>Access law subject notes, PDF guides, and court practice tips.</p>
+            </div>
+        </div>
+
+        <div id="content-area"></div>
+    </div>
+
+    <button class="chatbot-btn" onclick="openChatbot()">💬 Ask Legal Bot</button>
+
+
+
+    <script>
+        function openChatbot() {
+          alert(" Launching the chatbot... just a sec!.");
+          window.open("studentchatbot.html", "_blank");
+        }
+        function goBack() {
+          window.history.back();
+        }
+        function hideContent() {
+  document.getElementById("content-area").style.display = "none";
+}
+
+      
+        function showContent(type) {
+          const contentArea = document.getElementById("content-area");
+          contentArea.style.display = "block";
+          let content = '';
+      
+          if (type === 'fundamental') {
+            content = `
+              <h2>Fundamental Rights in India</h2>
+              <ul>
+                <li><strong>Right to Equality:</strong> Article 14–18</li>
+                <li><strong>Right to Freedom:</strong> Article 19–22</li>
+                <li><strong>Right against Exploitation:</strong> Article 23–24</li>
+                <li><strong>Right to Freedom of Religion:</strong> Article 25–28</li>
+                <li><strong>Cultural and Educational Rights:</strong> Article 29–30</li>
+                <li><strong>Right to Constitutional Remedies:</strong> Article 32</li>
+              </ul>
+            `;
+          } else if (type === 'ipc') {
+            content = `
+              <h2>Important IPC Sections</h2>
+              <ul>
+                <li><strong>Section 302:</strong> Punishment for murder</li>
+                <li><strong>Section 375–376:</strong> Rape and related offences</li>
+                <li><strong>Section 420:</strong> Cheating and dishonestly inducing delivery of property</li>
+                <li><strong>Section 498A:</strong> Cruelty by husband or relatives</li>
+              </ul>
+            `;
+          } else if (type === 'judgments') {
+            content = `
+              <h2>Landmark Judgments</h2>
+              <ul>
+                <li><strong>Kesavananda Bharati v. State of Kerala:</strong> Introduced Basic Structure Doctrine.</li>
+                <li><strong>Maneka Gandhi v. Union of India:</strong> Expanded interpretation of Article 21.</li>
+                <li><strong>Navtej Singh Johar v. Union of India:</strong> Decriminalized Section 377.</li>
+              </ul>
+            `;
+          } else if (type === 'notes') {
+            content = `
+              <h2>Downloadable Law Notes</h2>
+              <ul>
+                <li><a href="static/2023050195.pdf">📄 Constitutional Law - PDF</a></li>
+                <li><a href="static/wipo_guide_ipc_2019.pdf">📄 IPC Visual Guide - PDF</a></li>
+                <li><a href="static/legal writing.pdf">📄 Legal Writing Tips - PDF</a></li>
+              </ul>
+            `;
+          }
+      
+          contentArea.innerHTML = content;
+        }
+      
+        function showSidebarContent(type) {
+          const contentArea = document.getElementById("content-area");
+          contentArea.style.display = "block";
+      
+          let content = "";
+      
+          if (type === "laws") {
+            content = `
+              <h2>Indian Laws Overview</h2>
+              <ul>
+                <li>📘 <strong>Constitution of India</strong> - Framework for governance and fundamental rights</li>
+                <li>🔍 <strong>IPC (Indian Penal Code)</strong> - Defines criminal offenses and punishments</li>
+                <li>📜 <strong>Civil Procedure Code</strong> - Procedure for civil litigation</li>
+              </ul>
+            `;
+          } else if (type === "materials") {
+            content = `
+              <h2>Study Materials</h2>
+              <ul>
+                <li><a href="https://www.lawhousekolkata.com/indian-law/" target="_blank">📝 Bare Acts of Major Laws</a></li>
+                <li><a href="static/LegalTheory_CaseLawNotes.pdf" target="_blank">📚 Legal Theory & Case Law Notes</a></li>
+                <li><a href="static/MootCourt_Advocacy.pdf" target="_blank">📁 Moot Court & Advocacy Skills</a></li>
+              </ul>
+            `;
+          } else if (type === "cases") {
+            content = `
+              <h2>Case Studies</h2>
+              <ul>
+                <li>📌 <strong>Vishaka v. State of Rajasthan</strong> - Sexual harassment guidelines</li>
+                <li>📌 <strong>Shreya Singhal v. Union of India</strong> - Freedom of speech online</li>
+              </ul>
+            `;
+          } else if (type === "events") {
+            content = `
+              <h2>Upcoming Legal Events</h2>
+              <ul>
+                <li>🗓️ National Moot Court Competition - May 2025</li>
+                <li>🗓️ Guest Lecture: Cyber Law - April 30, 2025</li>
+                <li>🗓️ Internship Fair - June 2025</li>
+              </ul>
+            `;
+          } else if (type === "chatbot") {
+            content = `
+              <h2>Legal Chatbot Assistant</h2>
+              <p>Interact with the AI legal assistant to clear your doubts regarding:</p>
+              <ul>
+                <li>⚖️ Fundamental Rights</li>
+                <li>⚖️ IPC/CrPC/Constitutional Law</li>
+                <li>⚖️ Landmark Judgments</li>
+              </ul>
+              <p>Click the "Ask Legal Bot" button below to get started.</p>
+            `;
+          }
+      
+          contentArea.innerHTML = content;
+        }
+      </script>
+      
+</body>
+</html>

@@ -1,0 +1,87 @@
+ /* Import Google Font */
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+ /* Reset and base styles */
+ body, html {
+     margin: 0;
+     padding: 0;
+     height: 100%;
+     font-family: 'Roboto', sans-serif;
+     background: url('/images/lawbackground.jpg') no-repeat center center fixed;
+     background-size: cover;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ /* Overlay to darken the background image */
+ .overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     animation: fadeIn 1s ease-out;
+ }
+
+ /* Modal container */
+ .role-selection {
+     background: #fff;
+     padding: 40px;
+     border-radius: 12px;
+     text-align: center;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+     transform: translateY(-20px);
+     animation: slideUp 0.5s ease-out forwards;
+ }
+
+ /* Heading styles */
+ .role-selection h2 {
+     margin-bottom: 10px;
+     font-weight: 500;
+     color: #333;
+ }
+
+ .role-selection p {
+     margin-bottom: 20px;
+     color: #666;
+ }
+
+ /* Roles container */
+ .roles {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+ }
+
+ /* Role buttons */
+ .role {
+     background: #007bff;
+     color: #fff;
+     border: none;
+     padding: 12px 20px;
+     border-radius: 6px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background 0.3s, transform 0.2s;
+ }
+
+ .role:hover {
+     background: #0056b3;
+     transform: translateY(-3px);
+ }
+
+ /* Keyframe animations */
+ @keyframes fadeIn {
+     from { opacity: 0; }
+     to { opacity: 1; }
+ }
+
+ @keyframes slideUp {
+     from { transform: translateY(20px); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+ }

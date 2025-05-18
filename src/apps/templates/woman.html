@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakti - Women's Empowerment Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E91E63;
+            --secondary: #9C27B0;
+            --accent: #FF4081;
+            --dark: #2A0944;
+            --light: #F8BBD0;
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f7 0%, #f8f4ff 100%);
+            color: var(--dark);
+        }
+        .fir-generator-container {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+
+        .fir-generator {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.2);
+            width: 280px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            margin-top: -230px;
+        }
+
+        .fir-generator:hover {
+            transform: translateX(10px);
+        }
+
+        .fir-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .fir-button:hover {
+            background: var(--accent);
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        @media (max-width: 768px) {
+            .fir-generator-container {
+                position: static;
+                transform: none;
+                margin: 2rem auto;
+                width: 90%;
+            }
+            
+            .hero {
+                flex-direction: column;
+                padding-top: 6rem;
+            }
+        }
+        .emergency-alert {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(233,30,99,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    color: white;
+    background: url('/images/woman.jpeg') no-repeat center center/cover;
+    padding: 5%;
+}
+
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .law-section {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+            margin: 4rem 0;
+        }
+
+        .quick-links {
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+          
+
+        }
+        .quick-linkss {
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin:0;
+          
+
+        }
+
+        .quick-link {
+            background: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .title-container {
+    display: flex;
+    justify-content: space-between; /* Places text on the same line */
+    align-items: center; /* Aligns vertically */
+    padding: 0; /* Adds space on both sides */
+}
+
+.chatbot-text {
+    color: white;
+    font-weight: bold;
+    font-size: 20px; /* Bigger size */
+    text-transform: uppercase;
+}
+
+.chatbot-container {
+    text-align: right;
+    padding-right: 70px;
+    margin-top: 20px;
+}
+
+.chatbot-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+
+        .chatbot-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+                    }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .safety-button {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fir-generator-container">
+        <div class="fir-generator">
+            <h3>File Instant FIR</h3>
+            <p>In case of harassment or violence, generate immediate FIR report</p>
+            <button class="fir-button" onclick="window.location.href='/FIR.html'">
+                <i class="fas fa-file-alt"></i>
+                Generate FIR
+            </button>
+        </div>
+    </div>
+    <!-- Emergency Button -->
+    <div class="emergency-alert" onclick="triggerEmergency()">
+        <i class="fas fa-bell"></i>
+        Emergency Alert
+    </div>
+
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empowering Indian Women</h1>
+            <p>Your Safety, Rights, and Growth Hub</p>
+            <div class="quick-links">
+                <a href="/safetytips.html" class="quick-link">Safety Tips</a>
+                <a href="/legalrights.html" class="quick-link">Legal Rights</a>
+                <a href="/resources.html" class="quick-link">Health Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="grid-container">
+        <!-- Safety Section -->
+        <div class="feature-card">
+            <h3>🚨 Immediate Safety</h3>
+            <ul>
+                <li>Panic Button to Nearest Police Station</li>
+                <li>Live Location Sharing</li>
+                <li>Safe Ride Integration</li>
+            </ul>
+            <button class="safety-button">
+                <i class="fas fa-shield-alt"></i>
+                Activate Protection
+            </button>
+        </div>
+
+        <!-- Legal Rights -->
+        <div class="feature-card">
+            <h3>⚖️ Legal Empowerment</h3>
+            <ul>
+                <li>PWDVA 2005 Protection</li>
+                <li>Section 498A (Dowry)</li>
+                <li>POSH Act 2013</li>
+            </ul>
+            <button class="safety-button">
+                <i class="fas fa-balance-scale"></i>
+                Know Your Rights
+            </button>
+        </div>
+
+        <!-- Health Section -->
+        <div class="feature-card">
+            <h3>❤️ Health & Wellness</h3>
+            <ul>
+                <li>Period Tracker</li>
+                <li>Mental Health Support</li>
+                <li>Maternal Care Resources</li>
+            </ul>
+            <button class="safety-button">
+                <i class="fas fa-heartbeat"></i>
+                Health Portal
+            </button>
+        </div>
+    </div>
+
+    <!-- Legal Section -->
+    <section class="law-section">
+        <h2>Key Indian Laws for Women </h2>
+        <h2 style="text-align: right;">Need any assistance? </h2>
+        <div class="quick-linkss">
+            <a href="#" class="quick-link">Domestic Violence Act</a>
+            <a href="#" class="quick-link">Sexual Harassment Law</a>
+            <a href="#" class="quick-link">Property Rights</a>
+        </div>
+        <div class="chatbot-container">
+            <a href="/womanchatbot.html" class="chatbot-button"> Visit Lawbot</a>
+        </div>
+
+    </section>
+
+    <footer style="background: var(--dark); color: white; padding: 4rem 5%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <!-- Helpline Info -->
+            <div style="margin-bottom: 2rem;">
+                <p style="margin-bottom: 0.5rem; font-size: 1.1rem;">
+                    <i class="fas fa-phone-alt" style="margin-right: 8px;"></i>24/7 Helpline: 112 (All India Emergency)
+                </p>
+                <p style="font-size: 1.1rem;">
+                    <i class="fas fa-female" style="margin-right: 8px;"></i>Women's Helpline: 1091
+                </p>
+            </div>
+
+            <div class="footer-buttons" style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+            
+    
+                <button onclick="window.location.href='/role'"
+                        style="background: rgb(255 9 0); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; display: flex; align-items: center;">
+                    <i class="fas fa-undo" style="margin-right: 8px;"></i>Back to Role Selection
+                </button>
+            </div>
+
+    <script>
+        // Emergency Functionality
+        function openFIRForm() {
+            // Redirect to FIR form page or show modal
+            window.location.href = 'FIR.html';
+            // For demo purpose:
+            alert('Redirecting to FIR submission form...');
+        }
+        // Emergency Functionality
+        function triggerEmergency() {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                
+                // Send alert to nearest police station
+                alert(`Emergency alert sent to authorities!\nCoordinates: ${lat},${lng}`);
+                
+                // Optional: Connect to backend API
+                // fetch('/emergency', { method: 'POST', body: JSON.stringify({ lat, lng }) });
+            });
+        }
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

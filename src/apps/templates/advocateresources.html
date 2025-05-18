@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocate Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a5298;
+            --secondary: #1e3c72;
+            --accent: #e67e22;
+            --light-bg: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .page-title {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background: var(--light-bg);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card-header h3 {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .resource-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #eee;
+        }
+        .resource-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .resource-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .resource-link:hover {
+            color: var(--primary);
+        }
+        .resource-link i {
+            color: var(--accent);
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+        .resource-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+            margin-left: 24px;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--light-bg);
+            color: var(--primary);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .resources-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Legal Resources</h1>
+        <a href="advocatedashboard.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">Essential Legal Tools & References</h2>
+        
+        <div class="resources-container">
+            <!-- AI Research Tools -->
+        
+
+            <!-- Case Law Databases -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Case Law Databases</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <a href="https://indiankanoon.org/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>Indian Kanoon</strong>
+                                    <div class="resource-desc">Free Indian case law database with comprehensive search</div>
+                                    <span class="tag">Free</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="resource-item">
+                            <a href="https://www.scconline.com/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>SCC Online</strong>
+                                    <div class="resource-desc">Premium case law database with editorial enhancements</div>
+                                    <span class="tag">Premium</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="resource-item">
+                            <a href="https://www.manupatrafast.com/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>Manupatra</strong>
+                                    <div class="resource-desc">Indian legal research with statutes and case law</div>
+                                    <span class="tag">Subscription</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practice Management -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <i class="fas fa-tools"></i>
+                    <h3>Practice Management</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <a href="https://clio.com/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>Clio</strong>
+                                    <div class="resource-desc">Cloud-based legal practice management software</div>
+                                    <span class="tag">Cloud</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="resource-item">
+                            <a href="https://www.lexisnexis.com/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>LexisNexis</strong>
+                                    <div class="resource-desc">Legal research and business analytics solutions</div>
+                                    <span class="tag">Enterprise</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="resource-item">
+                            <a href="https://www.lawpay.com/" target="_blank" class="resource-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <div>
+                                    <strong>LawPay</strong>
+                                    <div class="resource-desc">Payment processing designed for legal professionals</div>
+                                    <span class="tag">Payments</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Recent Amendments -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>2024 Legal Updates</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <div class="resource-link">
+                                <i class="fas fa-file-alt"></i>
+                                <div>
+                                    <strong>BNSS (Bharatiya Nagarik Suraksha Sanhita)</strong>
+                                    <div class="resource-desc">Replaces CrPC with 533 sections, 160+ changes</div>
+                                    <span class="tag">Criminal Law</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="resource-item">
+                            <div class="resource-link">
+                                <i class="fas fa-file-alt"></i>
+                                <div>
+                                    <strong>BSS (Bharatiya Sakshya Adhiniyam)</strong>
+                                    <div class="resource-desc">New evidence law replacing Indian Evidence Act</div>
+                                    <span class="tag">Evidence</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="resource-item">
+                            <div class="resource-link">
+                                <i class="fas fa-file-alt"></i>
+                                <div>
+                                    <strong>DPDP Act 2023</strong>
+                                    <div class="resource-desc">Digital Personal Data Protection framework</div>
+                                    <span class="tag">Data Privacy</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple token verification
+        document.getElementById("chatbotButton").addEventListener("click", function() {
+            window.location.href = "advocatechatbot.html";
+        });
+    </script>
+</body>
+</html>
