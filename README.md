@@ -1,4 +1,4 @@
 # A-Smart-kegal-assistant-for-Indian-Laws
-cd src
-cd apps
+cd src enter
+cd apps enter
 python app.py
